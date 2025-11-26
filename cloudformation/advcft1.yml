@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: >
-  Fixed CloudFormation template for eu-north-1 region (no KeyName required)
+  Fixed CloudFormation template for us-east-1a region
 
 Parameters:
   VpcCidr:
@@ -25,7 +25,7 @@ Parameters:
 
   AmiId:
     Type: String
-    Default: ami-0230bd60aa48260c6   # Amazon Linux 2 for us-east-1
+    Default: ami-0230bd60aa48260c6
 
 Resources:
 
