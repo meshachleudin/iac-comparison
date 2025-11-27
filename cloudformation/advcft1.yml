@@ -1,6 +1,6 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: >
-  Fixed CloudFormation template for us-east-1a region
+  Fixed CloudFormation template for eu-north-1 region (no KeyName required)
 
 Parameters:
   VpcCidr:
@@ -25,7 +25,7 @@ Parameters:
 
   AmiId:
     Type: String
-    Default: ami-0230bd60aa48260c6
+    Default: ami-0230bd60aa48260c6   # Amazon Linux 2 for us-east-1
 
 Resources:
 
@@ -170,12 +170,53 @@ Resources:
 
 Outputs:
   VpcId:
+    Description: VPC id
     Value: !Ref MainVPC
+
   PublicSubnetId:
+    Description: Public subnet id
     Value: !Ref PublicSubnet
+
   PrivateSubnetId:
+    Description: Private subnet id
     Value: !Ref PrivateSubnet
+
+  PublicRouteTableId:
+    Description: Public route table id
+    Value: !Ref PublicRouteTable
+
+  PrivateRouteTableId:
+    Description: Private route table id
+    Value: !Ref PrivateRouteTable
+
+  InternetGatewayId:
+    Description: Internet Gateway id
+    Value: !Ref InternetGateway
+
+  NatEipAllocationId:
+    Description: NAT EIP allocation id
+    Value: !GetAtt NatEIP.AllocationId
+
+  NatGatewayId:
+    Description: NAT Gateway id
+    Value: !Ref NatGateway
+
+  InstanceSecurityGroupId:
+    Description: Security Group id for instances
+    Value: !Ref InstanceSecurityGroup
+
   PublicInstanceId:
+    Description: Public EC2 instance id
     Value: !Ref PublicInstance
+
+  PublicInstancePublicIp:
+    Description: Public EC2 public ip
+    Value: !GetAtt PublicInstance.PublicIp
+
   PrivateInstanceId:
+    Description: Private EC2 instance id
     Value: !Ref PrivateInstance
+
+  PrivateInstancePrivateIp:
+    Description: Private EC2 private ip
+    Value: !GetAtt PrivateInstance.PrivateIp
